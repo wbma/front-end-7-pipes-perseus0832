@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { MediaService } from './services/media.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UploadComponent } from './upload/upload.component';
 
 
 
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     LoginComponent,
     LogoutComponent,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,

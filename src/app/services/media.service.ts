@@ -6,11 +6,12 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class MediaService {
-  username: string;
-  password: string;
+  username: string = "";
+  password: string = "";
   status: string;
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   apiUrl_user = 'http://media.mw.metropolia.fi/wbma/users/user';
+  apiUrl_media = 'http://media.mw.metropolia.fi/wbma/media';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -30,6 +31,9 @@ export class MediaService {
       console.log(response['token']);
       localStorage.setItem('token', response['token']);
       this.router.navigate(['front']);
+      this.username=null;
+      this.password=null;
+      this.status=null;
     }, (error: HttpErrorResponse)=>{
       console.log(error.error.message);
       this.status = error.error.message;
@@ -47,6 +51,15 @@ export class MediaService {
     console.log(settings);
     console.log(this.http.get(this.apiUrl_user, settings));
     return this.http.get(this.apiUrl_user, settings);
+  }
+
+  public uploadFile(media){
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
+    };
+    console.log(settings);
+    console.log(this.http.post(this.apiUrl_media, media, settings));
+    return this.http.post(this.apiUrl_media, media, settings);
   }
 
 

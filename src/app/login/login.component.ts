@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
       this.mediaService.getUserData().subscribe(Response=>{
         this.router.navigate(['front']);
         console.log('Welcome' + Response['full_name'])
-      
       }, (error: HttpErrorResponse)=>{
         console.log(error);
       });

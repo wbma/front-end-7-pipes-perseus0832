@@ -13,6 +13,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { MediaService } from './services/media.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UploadComponent } from './upload/upload.component';
+import { ThumbnailPipe } from './pipes/thumbnail.pipe';
 
 
 
@@ -25,6 +26,7 @@ import { UploadComponent } from './upload/upload.component';
     LoginComponent,
     LogoutComponent,
     UploadComponent,
+    ThumbnailPipe,
   ],
   imports: [
     BrowserModule,

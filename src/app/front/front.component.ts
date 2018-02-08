@@ -3,6 +3,8 @@ import { MediaService } from '../services/media.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http/src/response';
 import { HttpHeaders } from '@angular/common/http';
+import { NgModel } from '@angular/forms';
+import { ThumbnailPipe } from '../pipes/thumbnail.pipe';
 
 @Component({
   selector: 'app-front',
@@ -10,6 +12,10 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrls: ['./front.component.scss']
 })
 export class FrontComponent implements OnInit {
+  printThis: string;
+  mediaArray: any;
+  stopArray: any;
+  stopName: any;
 
   constructor(private mediaService: MediaService, private router: Router) { }
 
@@ -24,7 +30,20 @@ export class FrontComponent implements OnInit {
         this.router.navigate(['front']);
       })
     }
+
+    this.printThis = this.mediaService.test;
+    this.mediaService.getAllMedia().subscribe(data =>{
+      console.log(data);
+      this.mediaArray = data;
+
+      this.mediaArray.map(media => {
+             
+      });
+
+      console.log(this.mediaArray); 
     
+    })
+
   }
 
 }

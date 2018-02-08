@@ -6,9 +6,11 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class MediaService {
+  test = 'Head line';
   username: string = "";
   password: string = "";
   status: string;
+  mediaUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   apiUrl_user = 'http://media.mw.metropolia.fi/wbma/users/user';
   apiUrl_media = 'http://media.mw.metropolia.fi/wbma/media';
@@ -60,6 +62,10 @@ export class MediaService {
     console.log(settings);
     console.log(this.http.post(this.apiUrl_media, media, settings));
     return this.http.post(this.apiUrl_media, media, settings);
+  }
+
+  public getAllMedia(){
+    return this.http.get(this.apiUrl + '/media');
   }
 
 
